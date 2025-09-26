@@ -67,3 +67,26 @@ S1,fastq/SRRXXXX_1.fastq.gz,fastq/SRRXXXX_2.fastq.gz,auto
 S2,fastq/SRR...._1.fastq.gz,fastq/SRR...._2.fastq.gz,auto
 ...
 S10,fastq/SRR...._1.fastq.gz,fastq/SRR...._2.fastq.gz,auto
+```
+
+### 6.2 `nf-core/differentialabundance` 用（観測表 + コントラスト）
+
+`meta/samplesheet_da.csv`
+```csv
+sample,condition,replicate
+S1,control,1
+S2,control,2
+S3,control,3
+S4,control,4
+S5,control,5
+S6,stress,1
+S7,stress,2
+S8,stress,3
+S9,stress,4
+S10,stress,5
+```
+
+`meta/contrasts.csv`
+```csv
+id,variable,reference,target,blocking
+stress_vs_control,condition,control,stress,
