@@ -27,7 +27,7 @@
 mkdir -p ~/proj_stress_colitis/{fastq,ref,meta,results}
 brew install nextflow         # Homebrew 経由で Nextflow を導入
 # conda は Miniforge/Mambaforge を GUI インストーラ等で導入しておく
-
+```
 ---
 
 ## 4. データのダウンロード（ブラウザのみ）
