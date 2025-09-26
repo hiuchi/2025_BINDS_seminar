@@ -90,3 +90,40 @@ S10,stress,5
 ```csv
 id,variable,reference,target,blocking
 stress_vs_control,condition,control,stress,
+```
+
+## 7. 定量：`nf-core/rnaseq`（Salmon, 省リソース設定）
+
+```bash
+cd ~/proj_stress_colitis
+
+nextflow run nf-core/rnaseq -r 3.21.0 \
+  -profile conda \
+  --input meta/samplesheet_rnaseq.csv \
+  --fasta ref/Mus_musculus.GRCm39.cdna.fa.gz \
+  --gtf   ref/gencode.vM36.annotation.gtf.gz \
+  --aligner salmon \
+  --max_cpus 6 \
+  --max_memory '12.GB' \
+  --save_reference \
+  --outdir results/rnaseq
+```
+
+## 8. 差次的発現：`nf-core/differentialabundance`
+
+Salmon の gene-level **カウント行列**と**トランスクリプト長行列**を併用して、長さバイアスを補正しつつ DE を実行します。
+
+```bash
+nextflow run nf-core/differentialabundance -r 1.5.0 \
+  -profile conda \
+  --study_name GSE229320_stress_colon \
+  --study_type rnaseq \
+  --matrix results/rnaseq/**/salmon.merged.gene_counts.tsv \
+  --transcript_length_matrix results/rnaseq/**/salmon.merged.gene_lengths.tsv \
+  --input  meta/samplesheet_da.csv \
+  --contrasts meta/contrasts.csv \
+  --gtf ref/gencode.vM36.annotation.gtf.gz \
+  --features_gtf_feature_type gene \
+  --max_cpus 6 \
+  --max_memory '12.GB' \
+  --outdir results/da
