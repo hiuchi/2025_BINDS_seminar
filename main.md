@@ -31,7 +31,7 @@
 ---
 
 ## 3. リファレンスファイルとFASTQファイルのダウンロード
-- **3.1 各データについて**
+### 3.1 各データについて**
   - FASTQ ファイル : シーケンサーから出力された塩基配列とそのクオリティが記述されているファイル
     ```
     @SRR24350711.1 NB551353:21:HYMVTBGX9:1:11101:19311:1044 length=76
@@ -60,7 +60,7 @@
     chr1	ENSEMBL	gene	3172239	3172348	.	+	.	gene_id "ENSMUSG00000064842.3"; gene_type "snRNA"; gene_name "Gm26206"; level 3; mgi_id "MGI:5455983";
     chr1	ENSEMBL	transcript	3172239	3172348	.	+	.	gene_id "ENSMUSG00000064842.3"; transcript_id "ENSMUST00000082908.3"; gene_type "snRNA"; gene_name "Gm26206"; transcript_type "snRNA"; transcript_name "Gm26206-201"; level 3; transcript_support_level "NA"; mgi_id "MGI:5455983"; tag "basic"; tag "Ensembl_canonical"; tag "GENCODE_Primary";
     ```
-- **3.2 各データのダウンロード**
+### 3.2 各データのダウンロード**
   - **FASTQファイルのダウンロード**
     - [PRJNA963162](https://www.ncbi.nlm.nih.gov/Traces/study/?acc=PRJNA963162)
   - **リファレンスファイル（GRCm39, ReleaseM38）を [GENCODE](https://www.gencodegenes.org/mouse/) からダウンロード**
@@ -69,7 +69,7 @@
 
 ---
 
-## 5. 参照データ（GRCm39, 同一リリースで揃える）
+## 4. nf-core/rnaseq による定量
 
 - **GENCODE（例：release M36, GRCm39）**  
   https://www.gencodegenes.org/mouse/release_M36.html  
