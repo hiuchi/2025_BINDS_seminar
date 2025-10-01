@@ -16,14 +16,16 @@
 
 ## 2. 環境構築
 ### 2.1 Docker のインストール
-  - [公式サイト](https://www.docker.com)から Docker Desktop をインストールする
+[公式サイト](https://www.docker.com)から公式ドキュメントに従って Docker Desktop をインストールする。
 ### 2.2 Homebrew のインストール
+[公式サイト](https://brew.sh)に記述されているコマンドを実行後、パスを通す。
   ```zsh
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/ユーザ名/.zprofile
   eval "$(/opt/homebrew/bin/brew shellenv)”
   ```
 ### 2.3 Nextflow のインストール
+Homebrew を使って JAVA と Nextflow をインストールする。
   ```zsh
   brew install openjdk@11
   brew install nextflow
