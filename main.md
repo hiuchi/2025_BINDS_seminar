@@ -16,6 +16,7 @@
 
 ## 2. 環境構築
 - **Docker のインストール**
+  - [公式サイト](https://www.docker.com)から Docker Desktop をインストール
 - **Homebrew のインストール**
   ```zsh
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
