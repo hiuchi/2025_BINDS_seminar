@@ -19,9 +19,8 @@
 - Homebrew のインストール
   ```zsh
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  echo >> /Users/binds/.zprofile
-  echo 'eval "$(/opt/homebrew/bin/brew shellenv)" >> /Users/username/.zprofile
-eval "$(/opt/homebrew/bin/brew shellenv)”
+  echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/ユーザ名/.zprofile
+  eval "$(/opt/homebrew/bin/brew shellenv)”
 - Nextflow のインストール
 - Miniforge / Mambaforge 等の **conda**（`-profile conda` 用）
 - ディスク空き **50–80 GB** 目安（FASTQ・参照・結果を含む）
