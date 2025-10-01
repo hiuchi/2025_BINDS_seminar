@@ -72,7 +72,7 @@ chr1	ENSEMBL	transcript	3172239	3172348	.	+	.	gene_id "ENSMUSG00000064842.3"; tr
   - [PRJNA963162](https://www.ncbi.nlm.nih.gov/Traces/study/?acc=PRJNA963162)から FASTQ ファイルをダウンロードします。
 #### 3.2.2 リファレンスファイル（GRCm39, ReleaseM38）を [GENCODE](https://www.gencodegenes.org/mouse/) からダウンロード
   - GTF ファイル : Comprehensive gene annotation (All) をダウンロードします。
-  - ゲノムファイル : Transcript sequences	(ALL) をダウンロードします。
+  - FASTA ファイル : Transcript sequences	(ALL) をダウンロードします。
 
 ---
 
