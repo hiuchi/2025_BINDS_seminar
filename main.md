@@ -1,4 +1,4 @@
-# Stress-induced Colitis (Mouse, Bulk RNA-seq) — 再現デモ手順（MacBook Air）
+# BINDS発現・機能解析インシリコ解析融合ユニット講習会
 
 ## 1. 概要
 - **対象のデータ**：
