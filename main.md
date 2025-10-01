@@ -1,13 +1,14 @@
 # BINDS発現・機能解析インシリコ解析融合ユニット講習会
 
 ## 1. 概要
-- **対象のデータ**：
-  -  [Schneider, Kai Markus et al. Cell, Volume 186, Issue 13, 2823-2838.e20](https://doi.org/10.1016/j.cell.2023.05.001)
-  -  心理的ストレスを与えるため7日間拘束したマウスにおける結腸全組織のバルク RNA-seq データ、control 群と stress 群それぞれ各 n=5
-- **解析設計**：
-  - 生データ（FASTQ）を nf-core/rnaseq で定量
-  - 定量結果を nf-core/differentialabundance へ入力し、control vs stress の2群発現変動解析を実施
-- **検証環境**：MacBook Air (M4, 13-inch, 2024)
+### 1.1 対象のデータ
+-  [Schneider, Kai Markus et al. Cell, Volume 186, Issue 13, 2823-2838.e20](https://doi.org/10.1016/j.cell.2023.05.001)
+-  心理的ストレスを与えるため7日間拘束したマウスにおける結腸全組織のバルク RNA-seq データ、control 群と stress 群それぞれ各 n=5
+### 1.2 解析設計
+- 生データ（FASTQ）を nf-core/rnaseq で定量
+- 定量結果を nf-core/differentialabundance へ入力し、control vs stress の2群発現変動解析を実施
+### 1.3 検証環境
+- MacBook Air (M4, 13-inch, 2024)
   - CPU : 10コア
   - メモリ : 16GB
   - ストレージ : 256GB
@@ -34,18 +35,18 @@ Homebrew を使って JAVA と Nextflow をインストールする。
 
 ## 3. リファレンスファイルとFASTQファイルのダウンロード
 ### 3.1 各データについて
-  - FASTQ ファイル : シーケンサーから出力された塩基配列とそのクオリティが記述されているファイル
-    ```
-    @SRR24350711.1 NB551353:21:HYMVTBGX9:1:11101:19311:1044 length=76
-    AACAANTCCAGCCCCCACTGCGTGTGGCGTTCCAGCACCTCAAACTGATCCCACAACTCGGTACCCCAATCCATGC
-    +SRR24350711.1 NB551353:21:HYMVTBGX9:1:11101:19311:1044 length=76
-    AAAA6#/EAE/EAEEA/EE/EEE/EEE<E<//A/E</EAEE///A/EE//EA//<//EEE<</<E<<<</6<AAAA
-    @SRR24350711.2 NB551353:21:HYMVTBGX9:1:11101:13087:1052 length=76
-    CTGTANAACACCTTCACCTTTAACATCTAGACATTCGCTTTTCTTCTGTGTTCTCCAGTGTTTACTGTAATCTCCC
-    +SRR24350711.2 NB551353:21:HYMVTBGX9:1:11101:13087:1052 length=76
-    AAAAA#EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEAEEEEEEEEEEEEEEEEEEAEEE<EAEEAEEEEEEAEA<<
-    ```
-  - ゲノムファイル : 生物のゲノム配列が記述されたファイル
+- FASTQ ファイル : シーケンサーから出力された塩基配列とそのクオリティが記述されているファイル
+```
+@SRR24350711.1 NB551353:21:HYMVTBGX9:1:11101:19311:1044 length=76
+AACAANTCCAGCCCCCACTGCGTGTGGCGTTCCAGCACCTCAAACTGATCCCACAACTCGGTACCCCAATCCATGC
++SRR24350711.1 NB551353:21:HYMVTBGX9:1:11101:19311:1044 length=76
+AAAA6#/EAE/EAEEA/EE/EEE/EEE<E<//A/E</EAEE///A/EE//EA//<//EEE<</<E<<<</6<AAAA
+@SRR24350711.2 NB551353:21:HYMVTBGX9:1:11101:13087:1052 length=76
+CTGTANAACACCTTCACCTTTAACATCTAGACATTCGCTTTTCTTCTGTGTTCTCCAGTGTTTACTGTAATCTCCC
++SRR24350711.2 NB551353:21:HYMVTBGX9:1:11101:13087:1052 length=76
+AAAAA#EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEAEEEEEEEEEEEEEEEEEEAEEE<EAEEAEEEEEEAEA<<
+```
+### 3.2 ゲノムファイル : 生物のゲノム配列が記述されたファイル
     ```
     >ENSMUST00000193812.2|ENSMUSG00000102693.2|OTTMUSG00000049935.1|OTTMUST00000127109.1|4933401J01Rik-201|4933401J01Rik|1070|TEC|
     AAGGAAAGAGGATAACACTTGAAATGTAAATAAAGAAAATACCTAATAAAAATAAATAAA
