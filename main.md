@@ -31,7 +31,7 @@
 ---
 
 ## 3. リファレンスファイルとFASTQファイルのダウンロード
-- **各データについて**
+- **3.1 各データについて**
   - FASTQ ファイル : シーケンサーから出力された塩基配列とそのクオリティが記述されているファイル
     ```
     @SRR24350711.1 NB551353:21:HYMVTBGX9:1:11101:19311:1044 length=76
@@ -52,7 +52,7 @@
     TGGAATAGAAATATAAGTTTAATGCTAAGTATAAGTACCAGTAAAAGAATAATAAAAAGA
     AATATAAGTTGGGTATACAGTTATTTGCCAGCACAAAGCCTTGGGTATGGTTCTTAGCAC
     ```
-  - GTF ファイル : 遺伝子アノテーションが記述されたファイル。ゲノム配列が
+  - GTF ファイル : 遺伝子アノテーションが記述されたファイル
     ```
     chr1	HAVANA	gene	3143476	3144545	.	+	.	gene_id "ENSMUSG00000102693.2"; gene_type "TEC"; gene_name "4933401J01Rik"; level 2; mgi_id "MGI:1918292"; havana_gene "OTTMUSG00000049935.1";
     chr1	HAVANA	transcript	3143476	3144545	.	+	.	gene_id "ENSMUSG00000102693.2"; transcript_id "ENSMUST00000193812.2"; gene_type "TEC"; gene_name "4933401J01Rik"; transcript_type "TEC"; transcript_name "4933401J01Rik-201"; level 2; transcript_support_level "NA"; mgi_id "MGI:1918292"; tag "basic"; tag "Ensembl_canonical"; tag "GENCODE_Primary"; havana_gene "OTTMUSG00000049935.1"; havana_transcript "OTTMUST00000127109.1";
@@ -60,14 +60,12 @@
     chr1	ENSEMBL	gene	3172239	3172348	.	+	.	gene_id "ENSMUSG00000064842.3"; gene_type "snRNA"; gene_name "Gm26206"; level 3; mgi_id "MGI:5455983";
     chr1	ENSEMBL	transcript	3172239	3172348	.	+	.	gene_id "ENSMUSG00000064842.3"; transcript_id "ENSMUST00000082908.3"; gene_type "snRNA"; gene_name "Gm26206"; transcript_type "snRNA"; transcript_name "Gm26206-201"; level 3; transcript_support_level "NA"; mgi_id "MGI:5455983"; tag "basic"; tag "Ensembl_canonical"; tag "GENCODE_Primary";
     ```
-- **FASTQファイルのダウンロード**
-  - [PRJNA963162](https://www.ncbi.nlm.nih.gov/Traces/study/?acc=PRJNA963162)
-- **リファレンスファイルのダウンロード**  
-  https://www.ncbi.nlm.nih.gov/Traces/study/?acc=PRJNA963162  
-  - テーブルの **FASTQ files（FTP/HTTPS）** 列から各 SRR の `.fastq.gz` を保存し、`~/proj_stress_colitis/fastq/` に配置します。
-- **Processed（時間短縮の保険：行列一括）**  
-  https://www.ncbi.nlm.nih.gov/geo/download/?acc=GSE229320&format=file  
-  - `GSE229320_RAW.tar` に処理済み行列が含まれます（デモ時間が限られる場合のバックアップ）。
+- **3.2 各データのダウンロード**
+  - **FASTQファイルのダウンロード**
+    - [PRJNA963162](https://www.ncbi.nlm.nih.gov/Traces/study/?acc=PRJNA963162)
+  - **リファレンスファイル（GRCm39, ReleaseM38）を GENCODE からダウンロード**
+    - GTF ファイル : Comprehensive gene annotation (All) をダウンロード
+    - ゲノムファイル : Transcript sequences	(ALL) をダウンロード
 
 ---
 
