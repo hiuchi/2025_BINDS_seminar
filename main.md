@@ -14,8 +14,8 @@
 
 ---
 
-## 2. 必要環境（MacBook Air 向け）
-- macOS（Apple Silicon, 10-core CPU / 8-core GPU / 16 GB unified memory）
+## 2. 環境構築
+- Docker のインストール
 - Homebrew（Nextflow の導入に使用）
 - Miniforge / Mambaforge 等の **conda**（`-profile conda` 用）
 - ディスク空き **50–80 GB** 目安（FASTQ・参照・結果を含む）
