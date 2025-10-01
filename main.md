@@ -69,7 +69,7 @@ chr1	ENSEMBL	transcript	3172239	3172348	.	+	.	gene_id "ENSMUSG00000064842.3"; tr
 ### 3.2 各データのダウンロード
 #### 3.2.1 FASTQ ファイルのダウンロード
   - [PRJNA963162](https://www.ncbi.nlm.nih.gov/Traces/study/?acc=PRJNA963162)から FASTQ ファイルをダウンロードします。
-#### 3.2.2 リファレンスファイル（GRCm39, ReleaseM38）を [GENCODE](https://www.gencodegenes.org/mouse/) からダウンロード**
+#### 3.2.2 リファレンスファイル（GRCm39, ReleaseM38）を [GENCODE](https://www.gencodegenes.org/mouse/) からダウンロード
   - GTF ファイル : Comprehensive gene annotation (All) をダウンロードします。
   - ゲノムファイル : Transcript sequences	(ALL) をダウンロードします。
 
@@ -102,8 +102,8 @@ process {
 }
 NF
 ```
-### 4.3 salmon による定量
-salmon によって遺伝子産物の定量を行います。
+### 4.3 Salmon による定量
+Salmon によって遺伝子産物の定量を行います。
 ```
 nextflow run nf-core/rnaseq \
   -r 3.21.0 \
@@ -120,74 +120,40 @@ nextflow run nf-core/rnaseq \
 ```
 ---
 
-## 6. サンプルシート
-
-### 6.1 `nf-core/rnaseq` 用（4 列固定）
-
-`meta/samplesheet_rnaseq.csv`
-```csv
-sample,fastq_1,fastq_2,strandedness
-S1,fastq/SRRXXXX_1.fastq.gz,fastq/SRRXXXX_2.fastq.gz,auto
-S2,fastq/SRR...._1.fastq.gz,fastq/SRR...._2.fastq.gz,auto
-...
-S10,fastq/SRR...._1.fastq.gz,fastq/SRR...._2.fastq.gz,auto
+## 5. nf-core/differentialbundance による発現変動解析
+### 5.1 サンプルシートの作成
+サンプル名と条件の対応を記述し、`meta/samplesheet_daabundance.csv`として保存します。
 ```
-
-### 6.2 `nf-core/differentialabundance` 用（観測表 + コントラスト）
-
-`meta/samplesheet_da.csv`
-```csv
-sample,condition,replicate
-S1,control,1
-S2,control,2
-S3,control,3
-S4,control,4
-S5,control,5
-S6,stress,1
-S7,stress,2
-S8,stress,3
-S9,stress,4
-S10,stress,5
+sample,condition
+control1,control
+control2,control
+control3,control
+control4,control
+control5,control
+stress1,stress
+stress2,stress
+stress3,stress
+stress4,stress
+stress5,stress
 ```
-
-`meta/contrasts.csv`
-```csv
+### 5.2 コントラストファイルの作成
+比較のレイアウトを記述し、`meta/contrasts.csv`として保存します。
+```
 id,variable,reference,target,blocking
-stress_vs_control,condition,control,stress,
+stress_vs_control,condition,control,stress
 ```
 
-## 7. 定量：`nf-core/rnaseq`（Salmon, 省リソース設定）
-
-```bash
-cd ~/proj_stress_colitis
-
-nextflow run nf-core/rnaseq -r 3.21.0 \
-  -profile conda \
-  --input meta/samplesheet_rnaseq.csv \
-  --fasta ref/Mus_musculus.GRCm39.cdna.fa.gz \
-  --gtf   ref/gencode.vM36.annotation.gtf.gz \
-  --aligner salmon \
-  --max_cpus 6 \
-  --max_memory '12.GB' \
-  --save_reference \
-  --outdir results/rnaseq
+### 5.3 nf-core/differentialbundance による発現変動解析
+```
+nextflow run nf-core/differentialabundance \
+     -r 1.5.0 \
+     -profile docker \
+     --input meta/samplesheet_da.csv \
+     --contrasts meta/contrasts.csv \
+     --matrix results/salmon/salmon.merged.gene_counts.tsv \
+     --length results/salmon/salmon.merged.gene_lengths.tsv \
+     --gtf ref/gencode.vM38.chr_patch_hapl_scaff.annotation.gtf.gz \
+     --outdir DEG
 ```
 
-## 8. 差次的発現：`nf-core/differentialabundance`
-
-Salmon の gene-level **カウント行列**と**トランスクリプト長行列**を併用して、長さバイアスを補正しつつ DE を実行します。
-
-```bash
-nextflow run nf-core/differentialabundance -r 1.5.0 \
-  -profile conda \
-  --study_name GSE229320_stress_colon \
-  --study_type rnaseq \
-  --matrix results/rnaseq/**/salmon.merged.gene_counts.tsv \
-  --transcript_length_matrix results/rnaseq/**/salmon.merged.gene_lengths.tsv \
-  --input  meta/samplesheet_da.csv \
-  --contrasts meta/contrasts.csv \
-  --gtf ref/gencode.vM36.annotation.gtf.gz \
-  --features_gtf_feature_type gene \
-  --max_cpus 6 \
-  --max_memory '12.GB' \
-  --outdir results/da
+---
