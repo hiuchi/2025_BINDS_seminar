@@ -15,33 +15,23 @@
 ---
 
 ## 2. 環境構築
-- Docker のインストール
-- Homebrew のインストール
+- **Docker のインストール**
+- **Homebrew のインストール**
   ```zsh
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/ユーザ名/.zprofile
   eval "$(/opt/homebrew/bin/brew shellenv)”
   ```
-- Nextflow のインストール
+- **Nextflow のインストール**
   ```zsh
   brew install openjdk@11
   brew install nextflow
   ```
 ---
 
-## 3. プロジェクト準備
-
-```bash
-mkdir -p ~/proj_stress_colitis/{fastq,ref,meta,results}
-brew install nextflow         # Homebrew 経由で Nextflow を導入
-# conda は Miniforge/Mambaforge を GUI インストーラ等で導入しておく
-```
----
-
-## 4. データのダウンロード（ブラウザのみ）
-
-- **GEO Series（設計とサンプル一覧）**  
-  https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE229320
+## 3. リファレンスファイルとFASTQファイルのダウンロード
+- **FASTQファイルのダウンロード**
+  - [PRJNA963162](https://www.ncbi.nlm.nih.gov/Traces/study/?acc=PRJNA963162)
 - **SRA Run Selector（FASTQ 直リンク一覧）**  
   https://www.ncbi.nlm.nih.gov/Traces/study/?acc=PRJNA963162  
   - テーブルの **FASTQ files（FTP/HTTPS）** 列から各 SRR の `.fastq.gz` を保存し、`~/proj_stress_colitis/fastq/` に配置します。
