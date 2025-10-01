@@ -72,7 +72,7 @@
 ## 4. nf-core/rnaseq による定量
 
 ### 4.1 サンプルシートの作成
-サンプル名とファスタファイルへのパスの対応を記述し、`meta/samplesheet_rnaseq.csv`として保存する。
+サンプル名と FASTQ ファイルへのパスの対応を記述し、`meta/samplesheet_rnaseq.csv`として保存する。
 ```csv
 sample,fastq_1,strandedness
 stress1,/Users/ユーザ名/workshop/fastq/SRR24350711.fastq.gz,auto
@@ -86,15 +86,6 @@ control3,/Users/ユーザ名/workshop/fastq/SRR24350718.fastq.gz,auto
 control4,/Users/ユーザ名/workshop/fastq/SRR24350719.fastq.gz,auto
 control5,/Users/ユーザ名/workshop/fastq/SRR24350720.fastq.gz,auto
 ```
-
-- **GENCODE（例：release M36, GRCm39）**  
-  https://www.gencodegenes.org/mouse/release_M36.html  
-  - 取得ファイル：  
-    - GTF（Comprehensive annotation）  
-    - Transcript FASTA（cDNA sequences）  
-  - 保存例：`ref/gencode.vM36.annotation.gtf.gz`、`ref/Mus_musculus.GRCm39.cdna.fa.gz`
-
-> `--aligner salmon` を用いるため、**transcriptome FASTA + GTF** で十分です（ゲノム全体の STAR インデックスは不要）。
 
 ---
 
