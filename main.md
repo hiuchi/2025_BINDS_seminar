@@ -35,7 +35,8 @@ Homebrew を使って JAVA と Nextflow をインストールする。
 
 ## 3. リファレンスファイルとFASTQファイルのダウンロード
 ### 3.1 各データについて
-#### 3.1.1 FASTQ ファイル : シーケンサーから出力された塩基配列とそのクオリティが記述されているファイル
+#### 3.1.1 FASTQ ファイル
+シーケンサーから出力された塩基配列とそのクオリティが記述されているファイル
 ```
 @SRR24350711.1 NB551353:21:HYMVTBGX9:1:11101:19311:1044 length=76
 AACAANTCCAGCCCCCACTGCGTGTGGCGTTCCAGCACCTCAAACTGATCCCACAACTCGGTACCCCAATCCATGC
@@ -46,7 +47,8 @@ CTGTANAACACCTTCACCTTTAACATCTAGACATTCGCTTTTCTTCTGTGTTCTCCAGTGTTTACTGTAATCTCCC
 +SRR24350711.2 NB551353:21:HYMVTBGX9:1:11101:13087:1052 length=76
 AAAAA#EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEAEEEEEEEEEEEEEEEEEEAEEE<EAEEAEEEEEEAEA<<
 ```
-#### 3.1.2 ゲノムファイル : 生物のゲノム配列が記述されたファイル
+#### 3.1.2 ゲノムファイル
+対象生物のゲノム配列が記述されたファイル
 ```
 >ENSMUST00000193812.2|ENSMUSG00000102693.2|OTTMUSG00000049935.1|OTTMUST00000127109.1|4933401J01Rik-201|4933401J01Rik|1070|TEC|
 AAGGAAAGAGGATAACACTTGAAATGTAAATAAAGAAAATACCTAATAAAAATAAATAAA
@@ -55,7 +57,8 @@ ATAATCAAGGAAAAGACCTTTGCATATAAAATATATTTTGAATAAAATTCAGTGGAAGAA
 TGGAATAGAAATATAAGTTTAATGCTAAGTATAAGTACCAGTAAAAGAATAATAAAAAGA
 AATATAAGTTGGGTATACAGTTATTTGCCAGCACAAAGCCTTGGGTATGGTTCTTAGCAC
 ```
-#### 3.1.3 GTF ファイル : 遺伝子アノテーションが記述されたファイル
+#### 3.1.3 GTF ファイル
+遺伝子アノテーションが記述されたファイル
 ```
 chr1	HAVANA	gene	3143476	3144545	.	+	.	gene_id "ENSMUSG00000102693.2"; gene_type "TEC"; gene_name "4933401J01Rik"; level 2; mgi_id "MGI:1918292"; havana_gene "OTTMUSG00000049935.1";
 chr1	HAVANA	transcript	3143476	3144545	.	+	.	gene_id "ENSMUSG00000102693.2"; transcript_id "ENSMUST00000193812.2"; gene_type "TEC"; gene_name "4933401J01Rik"; transcript_type "TEC"; transcript_name "4933401J01Rik-201"; level 2; transcript_support_level "NA"; mgi_id "MGI:1918292"; tag "basic"; tag "Ensembl_canonical"; tag "GENCODE_Primary"; havana_gene "OTTMUSG00000049935.1"; havana_transcript "OTTMUST00000127109.1";
@@ -73,7 +76,6 @@ chr1	ENSEMBL	transcript	3172239	3172348	.	+	.	gene_id "ENSMUSG00000064842.3"; tr
 ---
 
 ## 4. nf-core/rnaseq による定量
-
 ### 4.1 サンプルシートの作成
 サンプル名と FASTQ ファイルへのパスの対応を記述し、`meta/samplesheet_rnaseq.csv`として保存する。
 ```csv
@@ -89,9 +91,7 @@ control3,/Users/ユーザ名/workshop/fastq/SRR24350718.fastq.gz,auto
 control4,/Users/ユーザ名/workshop/fastq/SRR24350719.fastq.gz,auto
 control5,/Users/ユーザ名/workshop/fastq/SRR24350720.fastq.gz,auto
 ```
-
-### 4.1 salmon による定量
-#### 4.1.1 キャップ指定ファイルの作成
+### 4.2 キャップ指定ファイルの作成
 今回は廉価なマシンを使用しているため、メモリが足りなくなりエラーが出ることがあります。`cap.nf`というファイルを作成し Nextflow に読み込ませることで、メモリを使いすぎないようにします。
 ```nf
 cat > cap.nf <<'NF'
@@ -102,7 +102,22 @@ process {
 }
 NF
 ```
-
+### 4.3 salmon による定量
+salmon によって遺伝子産物の定量を行います。
+```
+nextflow run nf-core/rnaseq \
+  -r 3.21.0 \
+  -profile docker \
+  -c cap.nf \
+  --input meta/samplesheet_rnaseq.csv \
+  --transcript_fasta ref/gencode.vM38.transcripts.fa.gz \
+  --gtf ref/gencode.vM38.chr_patch_hapl_scaff.annotation.gtf.gz \
+  --gencode \
+  --skip_trimming \
+  --skip_alignment \
+  --pseudo_aligner salmon \
+  --outdir results
+```
 ---
 
 ## 6. サンプルシート
