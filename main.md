@@ -87,6 +87,19 @@ control4,/Users/ユーザ名/workshop/fastq/SRR24350719.fastq.gz,auto
 control5,/Users/ユーザ名/workshop/fastq/SRR24350720.fastq.gz,auto
 ```
 
+### 4.1 salmon による定量
+#### 4.1.1 キャップ指定ファイルの作成
+今回は廉価なマシンを使用しているため、メモリの上限を指定しないとエラーが出ることがあります。下記のファイルを`meta/samplesheet_rnaseq.csv`として保存し Nextflow に読み込ませることでメモリを使いすぎないようにします。
+```nf
+cat > cap.nf <<'NF'
+process {
+  withLabel: process_low { cpus = 1; memory = 3.GB }
+  withLabel: process_medium { cpus = 2; memory = 6.GB }
+  withLabel: process_high { cpus = 4; memory = 8.GB }
+}
+NF
+```
+
 ---
 
 ## 6. サンプルシート
