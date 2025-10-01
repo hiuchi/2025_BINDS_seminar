@@ -33,7 +33,7 @@
 ## 3. リファレンスファイルとFASTQファイルのダウンロード
 - **FASTQファイルのダウンロード**
   - [PRJNA963162](https://www.ncbi.nlm.nih.gov/Traces/study/?acc=PRJNA963162)
-- **SRA Run Selector（FASTQ 直リンク一覧）**  
+- **リファレンスファイルのダウンロード**  
   https://www.ncbi.nlm.nih.gov/Traces/study/?acc=PRJNA963162  
   - テーブルの **FASTQ files（FTP/HTTPS）** 列から各 SRR の `.fastq.gz` を保存し、`~/proj_stress_colitis/fastq/` に配置します。
 - **Processed（時間短縮の保険：行列一括）**  
