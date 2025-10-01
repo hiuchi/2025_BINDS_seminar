@@ -21,14 +21,12 @@
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/ユーザ名/.zprofile
   eval "$(/opt/homebrew/bin/brew shellenv)”
+  ```
 - Nextflow のインストール
-- Miniforge / Mambaforge 等の **conda**（`-profile conda` 用）
-- ディスク空き **50–80 GB** 目安（FASTQ・参照・結果を含む）
-- JVM メモリ制限（推奨）
   ```zsh
-  echo "export NXF_OPTS='-Xms1g -Xmx4g'" >> ~/.zshrc
-  source ~/.zshrc
-
+  brew install openjdk@11
+  brew install nextflow
+  ```
 ---
 
 ## 3. プロジェクト準備
