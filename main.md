@@ -72,7 +72,7 @@
 ## 4. nf-core/rnaseq による定量
 
 ### 4.1 サンプルシートの作成
-`meta/samplesheet_rnaseq.csv`
+サンプル名とファスタファイルへのパスの対応を記述し、`meta/samplesheet_rnaseq.csv`として保存する。
 ```csv
 sample,fastq_1,strandedness
 stress1,/Users/ユーザ名/workshop/fastq/SRR24350711.fastq.gz,auto
