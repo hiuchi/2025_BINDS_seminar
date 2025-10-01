@@ -63,7 +63,7 @@
 - **3.2 各データのダウンロード**
   - **FASTQファイルのダウンロード**
     - [PRJNA963162](https://www.ncbi.nlm.nih.gov/Traces/study/?acc=PRJNA963162)
-  - **リファレンスファイル（GRCm39, ReleaseM38）を GENCODE からダウンロード**
+  - **リファレンスファイル（GRCm39, ReleaseM38）を [GENCODE](https://www.gencodegenes.org/mouse/) からダウンロード**
     - GTF ファイル : Comprehensive gene annotation (All) をダウンロード
     - ゲノムファイル : Transcript sequences	(ALL) をダウンロード
 
