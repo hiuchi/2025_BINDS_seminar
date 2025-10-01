@@ -17,11 +17,16 @@
 ## 2. 環境構築
 - Docker のインストール
 - Homebrew のインストール
+  ```zsh
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  echo >> /Users/binds/.zprofile
+  echo 'eval "$(/opt/homebrew/bin/brew shellenv)" >> /Users/username/.zprofile
+eval "$(/opt/homebrew/bin/brew shellenv)”
 - Nextflow のインストール
 - Miniforge / Mambaforge 等の **conda**（`-profile conda` 用）
 - ディスク空き **50–80 GB** 目安（FASTQ・参照・結果を含む）
 - JVM メモリ制限（推奨）
-  ```bash
+  ```zsh
   echo "export NXF_OPTS='-Xms1g -Xmx4g'" >> ~/.zshrc
   source ~/.zshrc
 
