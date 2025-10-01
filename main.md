@@ -1,11 +1,14 @@
 # Stress-induced Colitis (Mouse, Bulk RNA-seq) — 再現デモ手順（MacBook Air）
 
 ## 1. 概要
-- **実験設計**：心理ストレス（7日間拘束）**Stress** vs **Control**、各 n=5、結腸全組織のバルクRNA-seq。  
-- **解析設計**：  
-  - 生データ（FASTQ）を **nf-core/rnaseq**（`--aligner salmon`）で定量（軽量・高速）  
-  - 集約された gene-level 行列を **nf-core/differentialabundance** へ入力し、**control vs stress** の 2群 DE を実施  
-- **再現性**：パイプラインのバージョンを `-r` で固定（`rnaseq 3.21.0`、`differentialabundance 1.5.0`）。
+- **対象のデータ**：心理ストレス（7日間拘束）**Stress** vs **Control**、各 n=5、結腸全組織のバルクRNA-seq。
+  - [Schneider, Kai Markus et al. Cell, Volume 186, Issue 13, 2823-2838.e20](https://doi.org/10.1016/j.cell.2023.05.001)
+  - https://doi.org/10.1016/j.cell.2023.05.001
+  - 心理ストレス（7日間拘束）Stress vs Control、各 n=5、結腸全組織のバルクRNA-seq。
+- **実験設計**：心理ストレス（7日間拘束）**Stress** vs **Control**、各 n=5、結腸全組織のバルクRNA-seq。
+- **解析設計**：
+  - 生データ（FASTQ）を nf-core/rnaseq で定量
+  - 定量結果を nf-core/differentialabundance へ入力し、control vs stress の2群発現変動解析を実施
 
 ---
 
