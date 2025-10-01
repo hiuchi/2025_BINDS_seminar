@@ -61,11 +61,11 @@
     chr1	ENSEMBL	transcript	3172239	3172348	.	+	.	gene_id "ENSMUSG00000064842.3"; transcript_id "ENSMUST00000082908.3"; gene_type "snRNA"; gene_name "Gm26206"; transcript_type "snRNA"; transcript_name "Gm26206-201"; level 3; transcript_support_level "NA"; mgi_id "MGI:5455983"; tag "basic"; tag "Ensembl_canonical"; tag "GENCODE_Primary";
     ```
 ### 3.2 各データのダウンロード
-  - **FASTQファイルのダウンロード**
-    - [PRJNA963162](https://www.ncbi.nlm.nih.gov/Traces/study/?acc=PRJNA963162)
-  - **リファレンスファイル（GRCm39, ReleaseM38）を [GENCODE](https://www.gencodegenes.org/mouse/) からダウンロード**
-    - GTF ファイル : Comprehensive gene annotation (All) をダウンロード
-    - ゲノムファイル : Transcript sequences	(ALL) をダウンロード
+### 3.2.1 FASTQファイルのダウンロード
+  - [PRJNA963162](https://www.ncbi.nlm.nih.gov/Traces/study/?acc=PRJNA963162)
+### 3.2.2 リファレンスファイル（GRCm39, ReleaseM38）を [GENCODE](https://www.gencodegenes.org/mouse/) からダウンロード**
+  - GTF ファイル : Comprehensive gene annotation (All) をダウンロード
+  - ゲノムファイル : Transcript sequences	(ALL) をダウンロード
 
 ---
 
