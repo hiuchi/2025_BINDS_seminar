@@ -60,7 +60,7 @@
     chr1	ENSEMBL	gene	3172239	3172348	.	+	.	gene_id "ENSMUSG00000064842.3"; gene_type "snRNA"; gene_name "Gm26206"; level 3; mgi_id "MGI:5455983";
     chr1	ENSEMBL	transcript	3172239	3172348	.	+	.	gene_id "ENSMUSG00000064842.3"; transcript_id "ENSMUST00000082908.3"; gene_type "snRNA"; gene_name "Gm26206"; transcript_type "snRNA"; transcript_name "Gm26206-201"; level 3; transcript_support_level "NA"; mgi_id "MGI:5455983"; tag "basic"; tag "Ensembl_canonical"; tag "GENCODE_Primary";
     ```
-### 3.2 各データのダウンロード**
+### 3.2 各データのダウンロード
   - **FASTQファイルのダウンロード**
     - [PRJNA963162](https://www.ncbi.nlm.nih.gov/Traces/study/?acc=PRJNA963162)
   - **リファレンスファイル（GRCm39, ReleaseM38）を [GENCODE](https://www.gencodegenes.org/mouse/) からダウンロード**
@@ -70,6 +70,22 @@
 ---
 
 ## 4. nf-core/rnaseq による定量
+
+### 4.1 サンプルシートの作成
+`meta/samplesheet_rnaseq.csv`
+```csv
+sample,fastq_1,strandedness
+stress1,/Users/ユーザ名/workshop/fastq/SRR24350711.fastq.gz,auto
+stress2,/Users/ユーザ名/workshop/fastq/SRR24350712.fastq.gz,auto
+stress3,/Users/ユーザ名/workshop/fastq/SRR24350713.fastq.gz,auto
+stress4,/Users/ユーザ名/workshop/fastq/SRR24350714.fastq.gz,auto
+stress5,/Users/ユーザ名/workshop/fastq/SRR24350715.fastq.gz,auto
+control1,/Users/ユーザ名/workshop/fastq/SRR24350716.fastq.gz,auto
+control2,/Users/ユーザ名/workshop/fastq/SRR24350717.fastq.gz,auto
+control3,/Users/ユーザ名/workshop/fastq/SRR24350718.fastq.gz,auto
+control4,/Users/ユーザ名/workshop/fastq/SRR24350719.fastq.gz,auto
+control5,/Users/ユーザ名/workshop/fastq/SRR24350720.fastq.gz,auto
+```
 
 - **GENCODE（例：release M36, GRCm39）**  
   https://www.gencodegenes.org/mouse/release_M36.html  
