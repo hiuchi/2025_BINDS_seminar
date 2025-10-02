@@ -12,6 +12,7 @@
   - CPU : 10コア
   - メモリ : 16GB
   - ストレージ : 256GB
+  - OS : macOS Tahoe 26.0.1
 
 ---
 
@@ -97,9 +98,9 @@ control5,/Users/ユーザ名/workshop/fastq/SRR24350720.fastq.gz,auto
 ```nf
 cat > cap.nf <<'NF'
 process {
-  withLabel: process_low { cpus = 1; memory = 3.GB }
-  withLabel: process_medium { cpus = 2; memory = 6.GB }
-  withLabel: process_high { cpus = 4; memory = 8.GB }
+  withLabel: process_low { cpus = 2; memory = 4.GB; maxForks = 3 }
+  withLabel: process_medium { cpus = 4; memory = 6.GB; maxForks = 2 }
+  withLabel: process_high { cpus = 8; memory = 12.GB; maxForks = 1 }
 }
 NF
 ```
