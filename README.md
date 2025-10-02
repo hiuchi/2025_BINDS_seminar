@@ -26,7 +26,7 @@ Homebrew は macOS 用のパッケージマネージャです。
   ```zsh
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/ユーザ名/.zprofile
-  eval "$(/opt/homebrew/bin/brew shellenv)”
+  eval "$(/opt/homebrew/bin/brew shellenv)"
   ```
 ### 2.3 Nextflow のインストール
 Homebrew を使って JAVA と Nextflow をインストールします。
