@@ -13,7 +13,7 @@
   - メモリ : 16GB
   - ストレージ : 256GB
   - OS : macOS Tahoe 26.0.1
-- /Users/workshop で解析を行います。
+- `/Users/workshop`で解析を行います。
 
 ---
 
