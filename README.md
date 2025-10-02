@@ -3,7 +3,7 @@
 ## 1. 概要
 ### 1.1 対象のデータ
 - [Schneider, Kai Markus et al. Cell, Volume 186, Issue 13, 2823-2838.e20](https://doi.org/10.1016/j.cell.2023.05.001)
-- 心理的ストレスを与えるために 7 日間拘束したマウスの結腸全組織におけるバルク RNA-seq データです。control 群と stress 群がそれぞれ n=5 ずつ存在します。
+- 心理的ストレスを与えるために 7 日間拘束したマウスの結腸組織におけるバルク RNA-seq データです。control 群と stress 群がそれぞれ n=5 ずつ存在します。
 ### 1.2 解析設計
 - 生データ（FASTQ）を nf-core/rnaseq で定量します。
 - 定量結果を nf-core/differentialabundance へ入力し、control vs stress の2群発現変動解析を実施します。
