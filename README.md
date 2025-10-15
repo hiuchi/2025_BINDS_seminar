@@ -4,7 +4,7 @@
 ### 1.1 対象のデータ
 - [Schneider, Kai Markus et al. Cell, Volume 186, Issue 13, 2823-2838.e20](https://doi.org/10.1016/j.cell.2023.05.001)
 - 心理的ストレスを与えるために 7 日間拘束したマウスの結腸組織におけるバルク RNA-seq データです。control 群と stress 群がそれぞれ n=5 ずつ存在します。
-### 1.2 解析設計
+### 1.2 解析内容
 - 生データ（FASTQ）を nf-core/rnaseq で定量します。
 - 定量結果を nf-core/differentialabundance へ入力し、control vs stress の2群発現変動解析を実施します。
 ### 1.3 検証環境
@@ -105,6 +105,18 @@ process {
 }
 NF
 ```
+
+メモリが 8 GB 以下の場合は下記のファイルを作成します。
+```nf
+cat > cap.nf <<'NF'
+process {
+  withLabel: process_low { cpus = 3; memory = 3.GB; maxForks = 2 }
+  withLabel: process_medium { cpus = 4; memory = 6.GB; maxForks = 1 }
+  withLabel: process_high { cpus = 8; memory = 6.GB; maxForks = 1 }
+}
+NF
+```
+
 ### 4.3 Salmon による定量
 Salmon によって遺伝子産物の定量を行います。
 ```
