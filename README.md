@@ -110,9 +110,9 @@ NF
 ```nf
 cat > cap.nf <<'NF'
 process {
-  withLabel: process_low { cpus = 3; memory = 3.GB; maxForks = 2 }
-  withLabel: process_medium { cpus = 4; memory = 6.GB; maxForks = 1 }
-  withLabel: process_high { cpus = 8; memory = 6.GB; maxForks = 1 }
+  withLabel: process_low { cpus = 1; memory = 3.GB; maxForks = 2 }
+  withLabel: process_medium { cpus = 2; memory = 3.GB; maxForks = 2 }
+  withLabel: process_high { cpus = 7; memory = 6.GB; maxForks = 1 }
 }
 NF
 ```
