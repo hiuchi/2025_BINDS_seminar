@@ -31,7 +31,7 @@ Homebrew は macOS 用のパッケージマネージャです。
   eval "$(/opt/homebrew/bin/brew shellenv)"
   ```
 ### 2.3 Nextflow のインストール
-Homebrew を使って JAVA と Nextflow をインストールします。
+Homebrew を使って Java と Nextflow をインストールします。
   ```zsh
   brew install openjdk@11
   brew install nextflow
