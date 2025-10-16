@@ -82,19 +82,19 @@ chr1	ENSEMBL	transcript	3172239	3172348	.	+	.	gene_id "ENSMUSG00000064842.3"; tr
 
 ## 4. nf-core/rnaseq による定量
 ### 4.1 サンプルシートの作成
-サンプル名と FASTQ ファイルへのパスの対応を記述し、`meta/samplesheet_rnaseq.csv`として保存します。
+サンプル名と FASTQ ファイルへのパスの対応を記述し、`meta/samplesheet.csv`として保存します。
 ```csv
-sample,fastq_1,strandedness
-stress1,/Users/ユーザ名/workshop/fastq/SRR24350711.fastq.gz,auto
-stress2,/Users/ユーザ名/workshop/fastq/SRR24350712.fastq.gz,auto
-stress3,/Users/ユーザ名/workshop/fastq/SRR24350713.fastq.gz,auto
-stress4,/Users/ユーザ名/workshop/fastq/SRR24350714.fastq.gz,auto
-stress5,/Users/ユーザ名/workshop/fastq/SRR24350715.fastq.gz,auto
-control1,/Users/ユーザ名/workshop/fastq/SRR24350716.fastq.gz,auto
-control2,/Users/ユーザ名/workshop/fastq/SRR24350717.fastq.gz,auto
-control3,/Users/ユーザ名/workshop/fastq/SRR24350718.fastq.gz,auto
-control4,/Users/ユーザ名/workshop/fastq/SRR24350719.fastq.gz,auto
-control5,/Users/ユーザ名/workshop/fastq/SRR24350720.fastq.gz,auto
+sample,fastq_1,strandedness,condition
+stress1,/Users/ユーザ名/workshop/fastq/SRR24350711.fastq.gz,auto,stress
+stress2,/Users/ユーザ名/workshop/fastq/SRR24350712.fastq.gz,auto,stress
+stress3,/Users/ユーザ名/workshop/fastq/SRR24350713.fastq.gz,auto,stress
+stress4,/Users/ユーザ名/workshop/fastq/SRR24350714.fastq.gz,auto,stress
+stress5,/Users/ユーザ名/workshop/fastq/SRR24350715.fastq.gz,auto,stress
+control1,/Users/ユーザ名/workshop/fastq/SRR24350716.fastq.gz,auto,control
+control2,/Users/ユーザ名/workshop/fastq/SRR24350717.fastq.gz,auto,control
+control3,/Users/ユーザ名/workshop/fastq/SRR24350718.fastq.gz,auto,control
+control4,/Users/ユーザ名/workshop/fastq/SRR24350719.fastq.gz,auto,control
+control5,/Users/ユーザ名/workshop/fastq/SRR24350720.fastq.gz,auto,control
 ```
 ### 4.2 キャップ指定ファイルの作成
 今回は廉価なマシンを使用しているため、メモリが足りなくなりエラーが出ることがあります。`cap.nf`というファイルを作成し Nextflow に読み込ませることで、メモリを使いすぎないようにします。
@@ -138,34 +138,19 @@ nextflow run nf-core/rnaseq \
 ---
 
 ## 5. nf-core/differentialabundance による発現変動解析
-### 5.1 サンプルシートの作成
-サンプル名と条件の対応を記述し、`meta/samplesheet_da.csv`として保存します。
-```
-sample,condition
-control1,control
-control2,control
-control3,control
-control4,control
-control5,control
-stress1,stress
-stress2,stress
-stress3,stress
-stress4,stress
-stress5,stress
-```
-### 5.2 コントラストファイルの作成
+### 5.1 コントラストファイルの作成
 比較のレイアウトを記述し、`meta/contrasts.csv`として保存します。
 ```
 id,variable,reference,target,blocking
 stress_vs_control,condition,control,stress
 ```
 
-### 5.3 nf-core/differentialabundance による発現変動解析
+### 5.2 nf-core/differentialabundance による発現変動解析
 ```
 nextflow run nf-core/differentialabundance \
      -r 1.5.0 \
      -profile docker \
-     --input meta/samplesheet_da.csv \
+     --input meta/samplesheet.csv \
      --contrasts meta/contrasts.csv \
      --matrix results/salmon/salmon.merged.gene_counts.tsv \
      --length results/salmon/salmon.merged.gene_lengths.tsv \
